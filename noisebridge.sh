@@ -1,0 +1,1 @@
+curl -X POST -F image=@assets/noisebridge_animated.gif http://pegasus.noise:4444/api/image
