@@ -1,7 +1,9 @@
 #!/bin/bash
-
+$RANDOM=$$
 if which termux-info
 then 
+	#init Parrot Nuisance Counter
+	parrot_nuisance_count=0
 	while true
 	do
 		echo "found termux, looking for Noisebridge.."
@@ -10,10 +12,22 @@ then
 		ssid=$(termux-wifi-connectioninfo | jq ".ssid" | xargs)
 		if [ $ssid = "Noisebridge" ];
 		then
-			echo "on Noisebridge wifi.  Waiting 1 minute..."
-			sleep 60
+			if [ parrot_nuisance_count = 0 ]
+			then
+				duration=60
+			else
+				duration=$RANDOM
+				let "duration %= 60"
+			fi
+			echo "on Noisebridge wifi.  Waiting $duration seconds..."
+			sleep $duration
 			sh parrot.sh
-			break
+			if [ $; -gt 10 ];
+			then
+				break
+			else
+				let "parrot_nuisance_count+=1"
+			fi
 		else
 			echo "$ssid is not Noisebridge, waiting 30 secs and checking again."
 		fi
