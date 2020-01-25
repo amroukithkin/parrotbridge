@@ -5,7 +5,7 @@ then
 	termux-wifi-scaninfo
 	ssid=$(termux-wifi-connectioninfo | jq ".ssid")
 	echo "$ssid"
-	if [ "${ssid//\"}" = "Noisebridge" ];
+	if [ $ssid = "Noisebridge" ];
 	then
 		echo "on Noisebridge WAN, ENGAGE THE PARROTS"
 		sh parrot.sh
