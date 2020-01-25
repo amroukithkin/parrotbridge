@@ -9,5 +9,6 @@ then
 	then
 		echo "on Noisebridge WAN, ENGAGE THE PARROTS"
 		sh parrot.sh
+	fi
 fi
 echo "did not find termux"
