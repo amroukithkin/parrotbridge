@@ -5,7 +5,7 @@ then
 	echo "found termux"
 	#load wifi info
 	termux-wifi-scaninfo
-	ssid=$(termux-wifi-connectioninfo | jq ".ssid")
+	ssid=$(termux-wifi-connectioninfo | jq ".ssid" | xargs)
 	echo $ssid
 	if [ "${ssid//\"}" = "Noisebridge" ];
 	then
