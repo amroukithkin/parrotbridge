@@ -5,8 +5,8 @@ then
 	while true
 	do
 		echo "found termux, looking for Noisebridge.."
-		#load wifi info
-		termux-wifi-scaninfo
+		#load wifi info, some SSIDs do not show up until you do an active scan
+		termux-wifi-scaninfo > /dev/null
 		ssid=$(termux-wifi-connectioninfo | jq ".ssid" | xargs)
 		if [ $ssid = "Noisebridge" ];
 		then
