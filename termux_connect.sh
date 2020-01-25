@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if which termux-info
 then 
 	echo "found termux"
